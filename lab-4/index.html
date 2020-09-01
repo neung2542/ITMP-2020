@@ -15,9 +15,12 @@
 		</section>
 		<section id="canvas_main">
 			<main>
-				<a-dot v-for='i in row*row' :style="{'--row':row,
+				<a-dot v-for='i in row*row' :style="{
+				'--row':row,
 				'--h':h,
-				'--l':l+'%'}"></a-dot>
+				'--l':l+'%',}"
+				:data-pick="i == pick"
+				></a-dot>
 				
 			</main>
 		</section>
@@ -29,8 +32,8 @@
 	</div>
 
 	<script>
-		let picklight = "20%" //เลือกว่ารอบนี้ อันพิเศษจะมีความสว่าง 20%
-		// document.registerElement('a-dot') //ให้ vue รู้จัก a-dot
+		let picklight = "75%" //เลือกว่ารอบนี้ อันพิเศษจะมีความสว่าง 20%
+		// document.regiterElement('a-dot') //ให้ vue รู้จัก a-dot
 
 		function rand(start,stop){//สร้างฟังก์ชัน random ไว้ใช้
 			let shift = (stop-start)+1
