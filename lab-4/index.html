@@ -44,9 +44,9 @@
 		let app = new Vue({
 			el:'#canvas',
 			data:{
-				row:2, //จำนวนแถวที่จะมีในรอบนี้
+				row:3, //จำนวนแถวที่จะมีในรอบนี้
 				h:270, // hue ในรอบนี้
-				time:15, //เวลาเริ่มต้น
+				time:10, //เวลาเริ่มต้น
 				score:0, //คะแนนเริ่มต้น
 				pick:1, //หมายเลขวงกลมที่จะสีแตกต่างจากก้อนอื่นๆ
 				l:25,//ความสว่างของสีทั่วไปในรอบนี้
@@ -56,20 +56,24 @@
 					console.log(e)
 					if(this.time > 0){
 						if(e){
-							this.time+=2
+							this.time+=0.5
 							this.correct()
 						}else{
 							this.score--
 							this.time--
+							this.row-=1
 						}
 					}
 					
 				},
 				correct: function(){
-					this.score++
-					this.row = rand(2,6)
-					this.pick = rand(1,6)
+					this.score+=1
+					this.row+=1
+					this.pick = rand(1,this.row**2)
 					console.log('Correct')
+					this.h = rand(1,360)
+					this.l = rand(25,70)
+					
 				}
 			}
 		})
