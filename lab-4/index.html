@@ -46,7 +46,7 @@
 			data:{
 				row:2, //จำนวนแถวที่จะมีในรอบนี้
 				h:270, // hue ในรอบนี้
-				time:20, //เวลาเริ่มต้น
+				time:15, //เวลาเริ่มต้น
 				score:0, //คะแนนเริ่มต้น
 				pick:1, //หมายเลขวงกลมที่จะสีแตกต่างจากก้อนอื่นๆ
 				l:25,//ความสว่างของสีทั่วไปในรอบนี้
@@ -54,10 +54,19 @@
 			methods: {
 				check: function(e){
 					console.log(e)
-					
+					if(this.time > 0){
+						if(e){
+							this.time+=2
+							this.correct()
+						}else{
+							this.score--
+							this.time--
+						}
+					}
 					
 				},
 				correct: function(){
+					this.score++
 					this.row = rand(2,6)
 					this.pick = rand(1,6)
 					console.log('Correct')
