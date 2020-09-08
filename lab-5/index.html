@@ -18,7 +18,7 @@
 		<section id="canvas_main" :data-play="play">
 			<main>
 				<div class="box _path" v-for="i in 14" :data-pst="i"></div>
-				<div class="box _toggle" data-pst="10" data-isrightarrow="1"></div>
+				<div class="box _toggle" data-pst="10" data-isrightarrow="isRightArrow"></div>
 
 				<div class="box _fruit" v-for="f in fruits" :data-pst="f.pst" :data-type="f.type"></div>
 
@@ -50,14 +50,14 @@
 		let app = new Vue({
 			el: '#canvas',
 			data: {
-				isRightArrow: isRightArrow,
+				isRightArrow:isRightArrow,
 				speed: speed,
 				play: true,
 				time: 0,
 				score: 0,
 				fruits: [
-					{ id: 1, type: 'red', pst: 5, run: true, step: 1 },
-					{ id: 2, type: 'yellow', pst: 3, run: true, step: 1 },
+					{ id: 1, type: 12, pst: 5, run: true, step: 1 },
+					{ id: 2, type: 16, pst: 3, run: true, step: 1 },
 
 				]
 			},
