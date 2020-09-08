@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Lab - Multimedia Programming 2563 ITKMITL</title>
 	<link rel="stylesheet" type="text/css" href="../src/reset.css">
 	<link rel="stylesheet" type="text/css" href="lab.css">
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
+
 <body>
 	<div id="canvas">
 		<section id="canvas_header">
@@ -13,12 +15,9 @@
 				{{score}}
 			</div>
 		</section>
-		<section id="canvas_main" 
-		:data-play="play">
+		<section id="canvas_main" :data-play="play">
 			<main>
-				<div class="box _path" 
-				v-for="i in 14" 
-				:data-pst="i"></div>
+				<div class="box _path" v-for="i in 14" :data-pst="i"></div>
 				<div class="box _toggle" data-pst="10" data-isrightarrow="1"></div>
 
 				<div class="box _fruit" v-for="f in fruits" :data-pst="f.pst" :data-type="f.type"></div>
@@ -26,57 +25,68 @@
 				<div class="box _origin"></div>
 				<div class="box _12" data-pst="12"></div>
 				<div class="box _16" data-pst="16"></div>
-				
+
 			</main>
 		</section>
 		<section id="canvas_footer">
-			<div v-if="play" class="btn" id="toggle">
+			<div v-if="play" class="btn" id="toggle" @click="change()">
 				Toggle
 			</div>
 			<div v-if="!play" class="btn" id="endgame">
-				Ene Game
+				End Game
 			</div>
 		</section>
 	</div>
 
 	<script>
-		function rand(start,stop){
-			let shift = (stop-start)+1
-			return Math.floor(Math.random()*100%shift)+start
+		function rand(start, stop) {
+			let shift = (stop - start) + 1
+			return Math.floor(Math.random() * 100 % shift) + start
 		}
-		
+
 		let nextFruitId = 3
 		let isRightArrow = 1
 		let speed = 1000
 		let app = new Vue({
-			el:'#canvas',
-			data:{
-				isRightArrow : isRightArrow,
-				speed : speed,
-				play:true,
-				time:0,
-				score:0,
-				fruits:[
-					{id:1,type:'red',pst:5,run:true,step:1},
-					{id:2,type:'yellow',pst:3,run:true,step:1},
-					
+			el: '#canvas',
+			data: {
+				isRightArrow: isRightArrow,
+				speed: speed,
+				play: true,
+				time: 0,
+				score: 0,
+				fruits: [
+					{ id: 1, type: 'red', pst: 5, run: true, step: 1 },
+					{ id: 2, type: 'yellow', pst: 3, run: true, step: 1 },
+
 				]
 			},
-			watch:{
-				turn: function (x){
+			methods: {
+				change: function () {
+					if (this.isRightArrow == 1) {
+						this.isRightArrow = 0
+					} else {
+						this.isRightArrow = 1
+					}
+				}
+			},
+			computed: {},
+			watch: {
+				turn: function (x) {
 					let count = this.fruits.length
-					for(let f in this.fruits){
+					for (let f in this.fruits) {
 						let run = this.fruits[f].run
-						if (run){
-							this.fruits[f].pst = this.fruits.pst+1
+						if (run) {
+							this.fruits[f].pst = this.fruits.pst + 1
 						}
 					}
 				}
 			}
 		})
-		let playing = setInterval(function(){
+		let playing = setInterval(function () {
 			app.turn++
-		},speed)
+		}, speed)
 	</script>
 </body>
+
 </html>
