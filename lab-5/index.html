@@ -56,7 +56,7 @@
 				isRightArrow:isRightArrow,
 				speed: speed,
 				play: true,
-				time: 0,
+				turn: 0,
 				score: 0,
 				fruits: [
 					{ id: 1, type: 12, pst: 5, run: true, step: 1 },
@@ -78,6 +78,14 @@
 				turn: function (x) {
 					let count = this.fruits.length
 					for (let f in this.fruits) {
+						if (this.fruits[f].pst == 10) {
+							if (this.isRightArrow == 1) {
+								this.fruits[f].step = 3
+							}else{
+								this.fruits[f].step = 1
+							}
+						}
+
 						let run = this.fruits[f].run
 						if (run) {
 							this.fruits[f].pst = this.fruits[f].pst + this.fruits[f].step
