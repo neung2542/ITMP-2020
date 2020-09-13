@@ -95,13 +95,14 @@ div.box{
 .box._path[data-pst="11"]{
 	transform: rotate(90deg);
 }
+
 .box._fruit{
 	background-color: yellow;
 	border-radius: 100%;
 	border: 3px solid #fffc;
 	transform: scale(.6);
 }
-.box._fruit[data-type="11"]{
+.box._fruit[data-type="12"]{
 	background-color: red;
 }
 
