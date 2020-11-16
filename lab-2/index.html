@@ -17,11 +17,12 @@
 		<h3>Website : {{person.website}}</h3>
 		<h3>Company : {{person.company.name}}</h3>
 		<button @click="randomcat">Look at him/her cat!!!</button>
-		<h2>{{cat.file}}</h2>
+		<h3></h3>
 		<img :src="cat.file" alt="">
 
 		<h2 v-for="u in users" :data-id="u.id" @click="viewBio(u)">
 			<img :src="`https://picsum.photos/id/${u.id}/300/300`" alt="">
+			
 			{{u.username}}
 		</h2>
 
